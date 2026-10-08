@@ -7,18 +7,18 @@ function App() {
   const [age, setAge] = useState("");
   const [Id, setId] = useState(null);
   useEffect(() => {
-    axios.get("http://localhost:5000/students").then((response) => {
+    axios.get("/students").then((response) => {
       setStudents(response.data);
     });
   }, []);
   function getStudents() {
-    axios.get("http://localhost:5000/students").then((response) => {
+    axios.get("/students").then((response) => {
       setStudents(response.data);
     });
   }
   function addStudent() {
     axios
-      .post("http://localhost:5000/students", {
+      .post("/students", {
         name: name,
         course: course,
         age: age,
@@ -38,7 +38,7 @@ function App() {
   }
   function updateStudent() {
     axios
-      .put("http://localhost:5000/students/" + Id, {
+      .put("students/" + Id, {
         name: name,
         course: course,
         age: age,
@@ -52,7 +52,7 @@ function App() {
       });
   }
   function deleteStudent(id) {
-    axios.delete("http://localhost:5000/students/" + id).then(() => {
+    axios.delete("/students/" + id).then(() => {
       getStudents();
     });
   }
